@@ -109,9 +109,9 @@ body {
   margin: auto;
   height: 100%;
   background-color: var(--dark-clr);
-  filter: blur(4px);
+  filter: blur(2px);
   border-radius: 1rem;
-  opacity: 0.2;
+  opacity: 0.3;
   z-index: -1;
 }
 
@@ -136,17 +136,25 @@ input[type="text"]:focus {
 }
 
 input[type="text"]:hover,
-input[type="text"]:hover + .suggestion {
+input[type="text"]:hover + .suggestion-container {
   width: calc(var(--search-width) + 5rem);
   transition: 2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.suggestion-container{
+  width: var(--search-width);
+  margin: auto;
+  margin-top: -3px;
+  max-height: 10rem;
+  overflow: auto;
 }
 
 .suggestion {
   background-color: var(--dark-clr);
   padding: 1rem;
-  width: var(--search-width);
   margin: auto;
   cursor: pointer;
+  width: 100%;
 }
 
 .nearby-location-card-wrapper {
@@ -184,9 +192,163 @@ input[type="text"]:hover + .suggestion {
   cursor: pointer;
 }
 
-@media screen and (max-width: 1000px) {
+.more-weather-info-container {
+  background-color: var(--main-theme-clr);
+  padding: 5rem 1rem;
+  min-height: 50rem;
+}
+
+.view-weather {
+  font-size: 2rem;
+  color: var(--importand-clr);
+  text-align: center;
+}
+
+.select-container {
+  width: min-content;
+  margin: auto;
+  padding: 1rem;
+}
+
+.select-container > select {
+  background-color: var(--dark-clr);
+  border: none;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  color: white;
+}
+
+.weather-info-wrapper {
+  display: flex;
+  gap: 0.4rem;
+  height: 100%;
+  margin: 10rem auto;
+}
+
+.next-btn,
+.prev-btn {
+  cursor: pointer;
+  background-color: var(--dark-clr);
+  color: white;
+  border: none;
+  padding: 1rem;
+}
+
+.weather-info-card-container {
+  display: flex;
+  gap: 1rem;
+  overflow: auto;
+  position: relative;
+  margin: auto;
+  height: 100%;
+}
+
+.weather-info-card-container > .weather-info-card {
+  min-width: 30rem;
+  min-height: 20rem;
+  flex: 1;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.weather-info-card:hover{
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: .2s ease-in-out;
+}
+
+.weather-info-card-container .icon-wrapper{
+  height: 40%;
+}
+
+footer {
+  text-align: center;
+  background-color: var(--dark-clr);
+  padding: 3rem;
+  color: white;
+  font-size: 1.5rem;
+}
+
+footer a {
+  color: white;
+}
+
+.country-city-weather-info{
+  border: 1px solid var(--dark-clr);
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 300px));
+  gap: 1rem;
+  justify-items: center;
+  justify-content: center;
+}
+
+.country-city-info-card{
+  background: white;
+  color: black;
+  border-radius: var(--border-radius);
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.country-city-info-card:hover{
+  background-color: var(--importand-clr);
+  color: white;
+}
+
+.country-city-wrapper{
+  text-align: center;
+}
+
+.bigger-header{
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.temp::after{
+  content: "°C";
+  display: inline-block;
+}
+
+.chart-data{
+  padding: 1rem;
+  overflow: auto;
+  width: 100%;
+  margin: auto;
+}
+
+.plot{
+  margin: auto;
+}
+
+@media screen and (max-width: 1023px) {
+  .weather-info-wrapper {
+    display: block;
+  }
+  .next-btn,
+  .prev-btn {
+    display: none;
+  }
+  .weather-info-card-container {
+    min-width: none;
+    overflow: initial;
+    flex-direction: column;
+    width: 75%;
+    margin: auto;
+  }
+  .weather-info-card-container > .weather-info-card {
+    min-width: 10rem;
+    min-height: 25rem; 
+    flex: 1;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
   input[type="text"]:hover,
-  input[type="text"]:hover + .suggestion {
+  input[type="text"]:hover + .suggestion-container {
     width: var(--search-width);
   }
   :root {
@@ -195,6 +357,13 @@ input[type="text"]:hover + .suggestion {
   .header-container,
   .suggestion,
   .icon-wrapper {
+    min-width: none;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .weather-info-card-container {
     width: 100%;
   }
 }
