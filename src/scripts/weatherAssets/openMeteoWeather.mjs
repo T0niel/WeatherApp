@@ -52,11 +52,7 @@ export default async function (lat, long, WMOData) {
     }
   );
 
-  console.log(
-    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&current=temperature_2m,relative_humidity_2m,is_day,precipitation,weather_code&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,weather_code,surface_pressure,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum&start_date=${getFormatedDate(
-      getThisWeeksMondayDate()
-    )}&end_date=${getFormatedDate(endOfWeekDate)}`
-  );
+  
   if (request.ok) {
     const data = await request.json();
 

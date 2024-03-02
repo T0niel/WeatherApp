@@ -1,8 +1,8 @@
-const webpack = require('webpack');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpack = require("webpack");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const config = {
   devtool: "inline-source-map",
@@ -25,15 +25,22 @@ const config = {
       },
       {
         test: /\.svg$/,
-        use: "file-loader",
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]", // Maintain the original filename
+            },
+          },
+        ],
       },
       {
         test: /\.png$/,
         use: [
           {
-            loader: "url-loader",
+            loader: "file-loader",
             options: {
-              mimetype: "image/png",
+              name: "[name].[ext]", // Maintain the original filename
             },
           },
         ],
