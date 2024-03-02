@@ -1,0 +1,86 @@
+{
+  "0": {
+    "description": "Sunny"
+  },
+  "1": {
+    "description": "Mainly Sunny"
+  },
+  "2": {
+    "description": "Partly Cloudy"
+  },
+  "3": {
+    "description": "Cloudy"
+  },
+  "45": {
+    "description": "Foggy"
+  },
+  "48": {
+    "description": "Rime Fog"
+  },
+  "51": {
+    "description": "Light Drizzle"
+  },
+  "53": {
+    "description": "Drizzle"
+  },
+  "55": {
+    "description": "Heavy Drizzle"
+  },
+  "56": {
+    "description": "Light Freezing Drizzle"
+  },
+  "57": {
+    "description": "Freezing Drizzle"
+  },
+  "61": {
+    "description": "Light Rain"
+  },
+  "63": {
+    "description": "Rain"
+  },
+  "65": {
+    "description": "Heavy Rain"
+  },
+  "66": {
+    "description": "Light Freezing Rain"
+  },
+  "67": {
+    "description": "Freezing Rain"
+  },
+  "71": {
+    "description": "Light Snow"
+  },
+  "73": {
+    "description": "Snow"
+  },
+  "75": {
+    "description": "Heavy Snow"
+  },
+  "77": {
+    "description": "Snow Grains"
+  },
+  "80": {
+    "description": "Light Showers"
+  },
+  "81": {
+    "description": "Showers"
+  },
+  "82": {
+    "description": "Heavy Showers"
+  },
+  "85": {
+    "description": "Light Snow Showers"
+  },
+  "86": {
+    "description": "Snow Showers"
+  },
+  "95": {
+    "description": "Thunderstorm"
+  },
+  "96": {
+    "description": "Light Thunderstorms With Hail"
+  },
+  "99": {
+    "description": "Thunderstorm With Hail"
+  }
+}
