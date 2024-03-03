@@ -4,7 +4,9 @@ export default function (domElement, loadingSignal, WMOCode, images) {
     throw new Error("Invalid WMO code");
   }
 
-  loadingSignal.style.display = "none";
+  if (loadingSignal) {
+    loadingSignal.style.display = "none";
+  }
 
   //Add the image
   const image = document.createElement("img");

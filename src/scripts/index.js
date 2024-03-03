@@ -5,7 +5,6 @@ import viewWeatherInfoUtil from "./viewWeatherInfoUtil"
 import "../styles/reset.css";
 import "../styles/loading.css";
 import "../styles/main.css";
-import plot from "./weatherAssets/plot"
 
 /*Import icons*/
 import "../assets/icons/cloud.svg";
@@ -17,6 +16,12 @@ import "../assets/icons/rain.svg";
 import "../assets/icons/snow.svg";
 import "../assets/icons/thunderstorm.svg";
 
+import WMOCodes from "./weatherAssets/weatherWMOCodeInfo.json";
+
+/*REMOVE ME*/
+import plot from "./weatherAssets/plot"
+
+
 /*Weather Assets*/
 import openMeteoWeather from "./weatherAssets/openMeteoWeather.mjs";
 import Weather from "./weatherAssets/weather.js";
@@ -27,26 +32,26 @@ import weatherIconGenerator from "./weatherDOMAssets/weatherIconGenerator.js";
 
 import weatherDOMManipulator from "./weatherDOMAssets/weatherDomUtil.js"
 
+
+themeModifier(".mode-icon", sun, night, ":root");
+viewWeatherInfoUtil(
+  ".prev-btn",
+  ".next-btn",
+  ".weather-info-card-container",
+  10,
+  5
+);
+plot(
+  ["Monday", "Tuesday", "Wensday", "Thursday", "Friday", "Saterday", "Sunday"],
+  [0, 0, 0, 0, 0, 0, 0]
+);
+
 weatherDOMManipulator(
   Weather,
   weatherIcon,
-  weatherIconGenerator(
-    "./day-cloud.svg",
-    "./cloud.svg",
-    "./night-alt-cloudy.svg",
-    "./night-clear.svg",
-    "./day-sunny.svg",
-    "./rain.svg",
-    "./rain.svg",
-    "./snow.svg",
-    "./snow.svg",
-    "./thunderstorm.svg"
-  ),
+  weatherIconGenerator,
   document.querySelector(".header-wrapper"),
   document.querySelector(".weather-info-card-container"),
-  document.querySelector("#search-location")
+  WMOCodes
 );
 
-themeModifier(".mode-icon", sun, night, ":root");
-viewWeatherInfoUtil(".prev-btn", ".next-btn", ".weather-info-card-container", 10, 5);
-plot(["Monday", "Tuesday", "Wensday", "Thursday", "Friday", "Saterday", "Sunday"], [0, 0, 0, 0, 0, 0, 0]);

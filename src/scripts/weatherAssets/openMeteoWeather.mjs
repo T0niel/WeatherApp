@@ -29,7 +29,7 @@ export default async function (lat, long, WMOData) {
   function getThisWeeksSundayDate() {
     const today = new Date();
     const dayOfWeek = today.getDay();
-    const daysUntilSunday = 7 - dayOfWeek;
+    let daysUntilSunday = 7 - dayOfWeek;
     if (dayOfWeek === 0) {
       daysUntilSunday = 7;
     }
