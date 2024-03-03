@@ -1,86 +1,226 @@
 {
   "0": {
-    "description": "Sunny"
+    "day": {
+      "description": "Sunny"
+    },
+    "night": {
+      "description": "Clear"
+    }
   },
   "1": {
-    "description": "Mainly Sunny"
+    "day": {
+      "description": "Mainly Sunny"
+    },
+    "night": {
+      "description": "Mainly Clear"
+    }
   },
   "2": {
-    "description": "Partly Cloudy"
+    "day": {
+      "description": "Partly Cloudy"
+    },
+    "night": {
+      "description": "Partly Cloudy"
+    }
   },
   "3": {
-    "description": "Cloudy"
+    "day": {
+      "description": "Cloudy"
+    },
+    "night": {
+      "description": "Cloudy"
+    }
   },
   "45": {
-    "description": "Foggy"
+    "day": {
+      "description": "Foggy"
+    },
+    "night": {
+      "description": "Foggy"
+    }
   },
   "48": {
-    "description": "Rime Fog"
+    "day": {
+      "description": "Rime Fog"
+    },
+    "night": {
+      "description": "Rime Fog"
+    }
   },
   "51": {
-    "description": "Light Drizzle"
+    "day": {
+      "description": "Light Drizzle"
+    },
+    "night": {
+      "description": "Light Drizzle"
+    }
   },
   "53": {
-    "description": "Drizzle"
+    "day": {
+      "description": "Drizzle"
+    },
+    "night": {
+      "description": "Drizzle"
+    }
   },
   "55": {
-    "description": "Heavy Drizzle"
+    "day": {
+      "description": "Heavy Drizzle"
+    },
+    "night": {
+      "description": "Heavy Drizzle"
+    }
   },
   "56": {
-    "description": "Light Freezing Drizzle"
+    "day": {
+      "description": "Light Freezing Drizzle"
+    },
+    "night": {
+      "description": "Light Freezing Drizzle"
+    }
   },
   "57": {
-    "description": "Freezing Drizzle"
+    "day": {
+      "description": "Freezing Drizzle"
+    },
+    "night": {
+      "description": "Freezing Drizzle"
+    }
   },
   "61": {
-    "description": "Light Rain"
+    "day": {
+      "description": "Light Rain"
+    },
+    "night": {
+      "description": "Light Rain"
+    }
   },
   "63": {
-    "description": "Rain"
+    "day": {
+      "description": "Rain"
+    },
+    "night": {
+      "description": "Rain"
+    }
   },
   "65": {
-    "description": "Heavy Rain"
+    "day": {
+      "description": "Heavy Rain"
+    },
+    "night": {
+      "description": "Heavy Rain"
+    }
   },
   "66": {
-    "description": "Light Freezing Rain"
+    "day": {
+      "description": "Light Freezing Rain"
+    },
+    "night": {
+      "description": "Light Freezing Rain"
+    }
   },
   "67": {
-    "description": "Freezing Rain"
+    "day": {
+      "description": "Freezing Rain"
+    },
+    "night": {
+      "description": "Freezing Rain"
+    }
   },
   "71": {
-    "description": "Light Snow"
+    "day": {
+      "description": "Light Snow"
+    },
+    "night": {
+      "description": "Light Snow"
+    }
   },
   "73": {
-    "description": "Snow"
+    "day": {
+      "description": "Snow"
+    },
+    "night": {
+      "description": "Snow"
+    }
   },
   "75": {
-    "description": "Heavy Snow"
+    "day": {
+      "description": "Heavy Snow"
+    },
+    "night": {
+      "description": "Heavy Snow"
+    }
   },
   "77": {
-    "description": "Snow Grains"
+    "day": {
+      "description": "Snow Grains"
+    },
+    "night": {
+      "description": "Snow Grains"
+    }
   },
   "80": {
-    "description": "Light Showers"
+    "day": {
+      "description": "Light Showers"
+    },
+    "night": {
+      "description": "Light Showers"
+    }
   },
   "81": {
-    "description": "Showers"
+    "day": {
+      "description": "Showers"
+    },
+    "night": {
+      "description": "Showers"
+    }
   },
   "82": {
-    "description": "Heavy Showers"
+    "day": {
+      "description": "Heavy Showers"
+    },
+    "night": {
+      "description": "Heavy Showers"
+    }
   },
   "85": {
-    "description": "Light Snow Showers"
+    "day": {
+      "description": "Light Snow Showers"
+    },
+    "night": {
+      "description": "Light Snow Showers"
+    }
   },
   "86": {
-    "description": "Snow Showers"
+    "day": {
+      "description": "Snow Showers"
+    },
+    "night": {
+      "description": "Snow Showers"
+    }
   },
   "95": {
-    "description": "Thunderstorm"
+    "day": {
+      "description": "Thunderstorm"
+    },
+    "night": {
+      "description": "Thunderstorm"
+    }
   },
   "96": {
-    "description": "Light Thunderstorms With Hail"
+    "day": {
+      "description": "Light Thunderstorms With Hail"
+    },
+    "night": {
+      "description": "Light Thunderstorms With Hail"
+    }
   },
   "99": {
-    "description": "Thunderstorm With Hail"
+    "day": {
+      "description": "Thunderstorm With Hail"
+    },
+    "night": {
+      "description": "Thunderstorm With Hail"
+    }
   }
 }

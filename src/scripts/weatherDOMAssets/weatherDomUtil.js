@@ -1,6 +1,10 @@
 import openMeteoWeather from "../weatherAssets/openMeteoWeather.mjs";
 import headerWrapperInitilizer from "./headerWrapperInitilizer";
 import findCity from "../citySuggestionAssets/findCity";
+import weatherInfoWrapper from "./weatherInfoWrapper";
+import countryCityWrapper from "./countryCityWrapper";
+import plotDom from "./plotDom";
+import plot from "../weatherAssets/plot";
 
 function getUserLocation() {
   return new Promise((resolve, reject) => {
@@ -76,9 +80,10 @@ export default async function (
   weatherIconHandeler,
   weatherIconObject,
   headerWrapper,
-  weatherCardContainer,
+  moreWeatherInfoContainer,
   WMOdata,
-  location
+  location,
+  weatherSelect
 ) {
   console.log("prev location: " + location);
   if (!location) {
@@ -93,14 +98,7 @@ export default async function (
 
   console.log("All operations done!");
 
-  headerWrapperInitilizer(
-    headerWrapper,
-    weather,
-    location.latitude,
-    location.longitude,
-    findCity,
-    weatherIconHandeler,
-    weatherIconObject(
+  const images = weatherIconObject(
       "./day-cloudy.svg",
       "./cloud.svg",
       "./night-alt-cloudy.svg",
@@ -112,8 +110,54 @@ export default async function (
       "./snow.svg",
       "./thunderstorm.svg",
       weather.getCurrentWeatherData().isDay,
-    ),
+    );
+
+  headerWrapperInitilizer(
+    headerWrapper,
+    weather,
+    weatherIconHandeler,
+    images,
+    WMOdata,
+    await findCity(location.latitude, location.longitude)
+  );
+
+  const locationInfo = await findCity(location.latitude, location.longitude); 
+  weatherSelect.addEventListener("change", async () => {
+    if (moreWeatherInfoContainer.querySelector(".weather-info-wrapper")) {
+      moreWeatherInfoContainer.removeChild(
+        moreWeatherInfoContainer.querySelector(".weather-info-wrapper")
+      );
+    }
+
+    await weatherInfoWrapper(
+      moreWeatherInfoContainer,
+      +weatherSelect.value,
+      weather,
+      locationInfo.country,
+      locationInfo.city,
+      images,
+      weatherIconHandeler
+    );
+
+  })
+
+  await weatherInfoWrapper(moreWeatherInfoContainer, 7, weather, locationInfo.country, locationInfo.city, images, weatherIconHandeler);
+
+  countryCityWrapper(
+    moreWeatherInfoContainer,
+    locationInfo.citiesOnCountry,
+    weatherObjectConstructor,
     WMOdata
   );
 
+  const weekAvarageTemp = [];
+  const thisWeekWeather = weather.getThisWeeksWeather();
+  console.log(thisWeekWeather);
+  for(let prop in thisWeekWeather.data){
+    weekAvarageTemp.push((thisWeekWeather.data[prop].minTemp + thisWeekWeather.data[prop].maxTemp) / 2);
+  }
+
+  console.log(weekAvarageTemp);
+
+  plotDom(plot, weekAvarageTemp, moreWeatherInfoContainer);
 }

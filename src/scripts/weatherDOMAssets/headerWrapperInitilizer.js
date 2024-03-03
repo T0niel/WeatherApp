@@ -7,17 +7,14 @@ import weatherConstructor from "../weatherAssets/weather";
 export default async function (
   headerWrapper,
   weather,
-  lat,
-  long,
-  findCityAPIFactory,
   iconHandeler,
   images,
-  WMOdata
+  WMOdata,
+  locationInfo
 ) {
   //Create location paragraph
   const location = document.createElement("h1");
   location.classList.add("location");
-  const locationInfo = await findCityAPIFactory(lat, long);
 
   location.textContent = `Location: ${locationInfo.country}, ${locationInfo.city}`;
 

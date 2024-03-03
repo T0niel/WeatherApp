@@ -57,7 +57,11 @@ export default async function (lat, long, WMOData) {
     const data = await request.json();
 
     function describeWeather(wmoCode) {
-      return WMOData[wmoCode].description;
+      if(data.current.is_day){
+        return WMOData[wmoCode].day.description;
+      }else{
+        return WMOData[wmoCode].night.description;
+      }
     }
 
     function getCurrentWeatherData() {

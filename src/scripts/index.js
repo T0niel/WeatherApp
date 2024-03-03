@@ -34,24 +34,16 @@ import weatherDOMManipulator from "./weatherDOMAssets/weatherDomUtil.js"
 
 
 themeModifier(".mode-icon", sun, night, ":root");
-viewWeatherInfoUtil(
-  ".prev-btn",
-  ".next-btn",
-  ".weather-info-card-container",
-  10,
-  5
-);
-plot(
-  ["Monday", "Tuesday", "Wensday", "Thursday", "Friday", "Saterday", "Sunday"],
-  [0, 0, 0, 0, 0, 0, 0]
-);
+
 
 weatherDOMManipulator(
   Weather,
   weatherIcon,
   weatherIconGenerator,
   document.querySelector(".header-wrapper"),
-  document.querySelector(".weather-info-card-container"),
-  WMOCodes
+  document.querySelector(".more-weather-info-container"),
+  WMOCodes,
+  null,
+  document.querySelector(".weather-select")
 );
 
