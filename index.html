@@ -4,64 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <title>Document</title>
-  <script defer src="runtime.44750cf175076dbf7aa2.js"></script><script defer src="main.eab7d666872a1a459fcd.js"></script><link href="main.css" rel="stylesheet"></head>
+    <title>Weather</title>
+  <script defer src="runtime.39c04cb9c8639c3da13a.js"></script><script defer src="vendors.14effc979503556a4a74.js"></script><script defer src="main.87ad1051351dcbcf85ce.js"></script><link href="main.css" rel="stylesheet"></head>
   <body>
     <header class="header">
       <div class="mode-icon"></div>
       <div class="header-container">
-        <div class="header-wrapper">
-          
-        </div>
+        <div class="header-wrapper"></div>
       </div>
     </header>
     <div class="more-weather-info-container">
       <h1 class="view-weather">View weather</h1>
       <div class="select-container">
         <select class="weather-select">
-          <option value="next7">Next 7 days.</option>
-          <option value="next14">Next 14 days.</option>
+          <option value="7">Next 7 days.</option>
+          <option value="14">Next 14 days.</option>
         </select>
-      </div>
-
-      <div class="weather-info-wrapper">
-        <button class="prev-btn">&lt;</button>
-        <div class="weather-info-card-container">
-          <div class="weather-info-card">
-            <h1 class="location">Location: loading...</h1>
-            <div class="icon-wrapper">
-              <div class="lds-roller">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
-            </div>
-            <div class="tempature-info">
-              <div class="temp">temp Loading...</div>
-              <div class="weather-text-info">loading...</div>
-              <p class="day">current day</p>
-            </div>
-          </div>
-        </div>
-
-        <button class="next-btn">&gt;</button>
-      </div>
-      <div class="country-city-wrapper">
-        <h1 class="bigger-header">tempatures in cities on this country</h1>
-        <div class="country-city-weather-info">
-          <!-- <div class="country-city-info-card">
-            Some City Here <span class="temp">10</span>
-          </div> -->
-        </div>
-      </div>
-      <div class="chart-data">
-        <h1 class="bigger-header">This week</h1>
-        <div class="plot" id="weatherPlot" style="width: 100%; max-width: 700px"></div>
       </div>
     </div>
     <footer>
