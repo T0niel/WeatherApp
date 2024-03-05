@@ -83,10 +83,6 @@ export default async function (
   weatherInfoWrapper.appendChild(nextBtn);
 
   if(document.querySelector(".country-city-wrapper")){
-    console.log(
-      moreWeatherInfoContainer.querySelector(".country-city-wrapper")
-    );
-    
     moreWeatherInfoContainer.insertBefore(
       weatherInfoWrapper,
       moreWeatherInfoContainer.querySelector(".country-city-wrapper")

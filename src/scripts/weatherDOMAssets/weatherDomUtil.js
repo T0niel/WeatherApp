@@ -81,18 +81,14 @@ export default async function (
   location,
   weatherSelect
 ) {
-  console.log("prev location: " + location);
   if (!location) {
     const safeLocationHandeler = handleUserLocationError(getUserLocation);
     location = await safeLocationHandeler();
   }
 
-  console.log("Getting weather data");
   const weather = await weatherObjectConstructor(
     openMeteoWeather(location.latitude, location.longitude, WMOdata)
   );
-
-  console.log("All operations done!");
 
   const images = weatherIconObject(
       "./day-cloudy.svg",
@@ -148,7 +144,6 @@ export default async function (
 
   const weekAvarageTemp = [];
   const thisWeekWeather = weather.getThisWeeksWeather();
-  console.log(thisWeekWeather);
   for(let prop in thisWeekWeather.data){
     weekAvarageTemp.push((thisWeekWeather.data[prop].minTemp + thisWeekWeather.data[prop].maxTemp) / 2);
   }

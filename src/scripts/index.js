@@ -1,9 +1,7 @@
 import sun from "../assets/icons/sun.png";
 import night from "../assets/icons/night-mode.png";
 import themeModifier from "./mode";
-import viewWeatherInfoUtil from "./viewWeatherInfoUtil";
 import "../styles/reset.css";
-import "../styles/loading.css";
 import "../styles/main.css";
 
 /*Import icons*/
@@ -18,11 +16,7 @@ import "../assets/icons/thunderstorm.svg";
 
 import WMOCodes from "./weatherAssets/weatherWMOCodeInfo.json";
 
-/*REMOVE ME*/
-import plot from "./weatherAssets/plot";
-
 /*Weather Assets*/
-import openMeteoWeather from "./weatherAssets/openMeteoWeather.mjs";
 import Weather from "./weatherAssets/weather.js";
 
 /*Debugging weatherIcons*/

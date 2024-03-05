@@ -71,10 +71,8 @@ export default async function (
   }
 
   if (foundCache) {
-    console.log("Cache found");
     return weatherOnSuccess(foundCache, WMOData, lat, long);
   } else {
-    console.log("No cache found making an request to the API");
     //Make an request to the server
     const request = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&current=temperature_2m,relative_humidity_2m,is_day,precipitation,weather_code&hourly=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation_probability,weather_code,surface_pressure,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum&start_date=${getFormatedDate(

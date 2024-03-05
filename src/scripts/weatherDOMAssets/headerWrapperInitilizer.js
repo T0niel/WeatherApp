@@ -1,6 +1,7 @@
 import citySuggestions from "../citySuggestionAssets/citySuggestions";
 import openMeteoWeather from "../weatherAssets/openMeteoWeather.mjs";
 import weatherConstructor from "../weatherAssets/weather";
+import { setQueryStringParameter } from "../queryStringInfoUtil";
 
 export default async function (
   headerWrapper,
@@ -68,6 +69,15 @@ export default async function (
   const keepChecking = [];
   let element = -1;
 
+  input.addEventListener("keydown", async (e) => {
+    if(e.key === "Enter"){
+      const data = await citySuggestions(input.value, 1);
+      setQueryStringParameter("latitude", data[0].latitute);
+      setQueryStringParameter("longitude", data[0].longitude);
+      window.location.href = window.location.href;
+    }
+  })
+
   input.addEventListener("input", async () => {
     element++;
     let elementCopy = element;
@@ -99,6 +109,11 @@ export default async function (
           suggestion.textContent = `${suggest.country}, ${suggest.city}`;
           seen.push(suggest.city);
           suggestionContainer.appendChild(suggestion);
+          suggestion.addEventListener("click", () => {
+            setQueryStringParameter("latitude", suggest.latitute);
+            setQueryStringParameter("longitude", suggest.longitude);
+            window.location.href = window.location.href;
+          })
         }
       });
     }
@@ -110,13 +125,12 @@ export default async function (
 
   headerWrapper.appendChild(userSearchInputContainer);
 
-  //<div class="nearby-location-container">
   const nearbyLocationContainer = document.createElement("div");
   nearbyLocationContainer.classList.add("nearby-location-container");
 
   const nearbyLocationPragraph = document.createElement("p");
   nearbyLocationPragraph.classList.add("nearby-location-paragraph");
-  nearbyLocationPragraph.textContent = "Other locations in this country";
+  nearbyLocationPragraph.textContent = "Other locations near or in this country";
 
   nearbyLocationContainer.appendChild(nearbyLocationPragraph);
 
@@ -150,7 +164,7 @@ export default async function (
 
         const locationItemCountryName = document.createElement("div");
         locationItemCountryName.classList.add("location-item-country-name");
-        locationItemCountryName.textContent = `Country ${locationInfo.country}`;
+        locationItemCountryName.textContent = `Country ${locationCity.country}`;
 
         locationItem.appendChild(locationItemCountryName);
 
@@ -161,6 +175,12 @@ export default async function (
           weather.getCurrentWeatherData().currentTemp
         }`;
         locationItem.appendChild(locationItemCurrentTemp);
+
+        locationItem.addEventListener("click", () => {
+          setQueryStringParameter("latitude", locationCity.latitute);
+          setQueryStringParameter("longitude", locationCity.longitude);
+          window.location.href = window.location.href;
+        })
 
         nearbyLocationCardWrapper.appendChild(locationItem);
       });
