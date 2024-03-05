@@ -26,6 +26,8 @@ export default function generateWMOCodeObject(
     assignURL(31, 50, ClearDayUrl);
     assignURL(51, 70, RainyDayUrl);
     assignURL(71, 90, SnowDayUrl);
+    assignURL(80, 86, RainyNightUrl);
+    assignURL(90, 99, thunderstorm);
   } else {
     wmoCodeObject[0] = ClearNightUrl;
     assignURL(1, 10, partyCloudNightUrl);
@@ -33,9 +35,10 @@ export default function generateWMOCodeObject(
     assignURL(31, 50, ClearNightUrl);
     assignURL(51, 70, RainyNightUrl);
     assignURL(71, 90, SnowNightUrl);
+    assignURL(80, 86, RainyNightUrl);
+    assignURL(90, 99, thunderstorm);
   }
 
-  wmoCodeObject[11] = wmoCodeObject[20] = wmoCodeObject[40] = thunderstorm;
   wmoCodeObject[20] = Cloudy;
 
   return wmoCodeObject;

@@ -1,7 +1,7 @@
 import sun from "../assets/icons/sun.png";
 import night from "../assets/icons/night-mode.png";
 import themeModifier from "./mode";
-import viewWeatherInfoUtil from "./viewWeatherInfoUtil"
+import viewWeatherInfoUtil from "./viewWeatherInfoUtil";
 import "../styles/reset.css";
 import "../styles/loading.css";
 import "../styles/main.css";
@@ -19,8 +19,7 @@ import "../assets/icons/thunderstorm.svg";
 import WMOCodes from "./weatherAssets/weatherWMOCodeInfo.json";
 
 /*REMOVE ME*/
-import plot from "./weatherAssets/plot"
-
+import plot from "./weatherAssets/plot";
 
 /*Weather Assets*/
 import openMeteoWeather from "./weatherAssets/openMeteoWeather.mjs";
@@ -30,11 +29,13 @@ import Weather from "./weatherAssets/weather.js";
 import weatherIcon from "./weatherDOMAssets/weatherIcon.js";
 import weatherIconGenerator from "./weatherDOMAssets/weatherIconGenerator.js";
 
-import weatherDOMManipulator from "./weatherDOMAssets/weatherDomUtil.js"
+import weatherDOMManipulator from "./weatherDOMAssets/weatherDomUtil.js";
 
+import { getQueryStringInfo } from "./queryStringInfoUtil.js";
 
 themeModifier(".mode-icon", sun, night, ":root");
 
+const queryStringInfo = getQueryStringInfo();
 
 weatherDOMManipulator(
   Weather,
@@ -43,7 +44,8 @@ weatherDOMManipulator(
   document.querySelector(".header-wrapper"),
   document.querySelector(".more-weather-info-container"),
   WMOCodes,
-  null,
+  queryStringInfo && queryStringInfo.latitude && queryStringInfo.longitude
+    ? queryStringInfo
+    : null,
   document.querySelector(".weather-select")
 );
-

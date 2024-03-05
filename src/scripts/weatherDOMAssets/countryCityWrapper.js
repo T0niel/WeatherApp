@@ -1,43 +1,57 @@
-import findNavigationCity from "../citySuggestionAssets/findNavigationCity";
+import citySuggestions from "../citySuggestionAssets/citySuggestions";
 import openMeteoWeather from "../weatherAssets/openMeteoWeather.mjs";
 
-export default function(moreWeatherInfoContainer, cities, weatherContructor, WMOData){
-    const countryCityWrapper = document.createElement("div");
-    countryCityWrapper.classList.add("country-city-wrapper");
+export default function (
+  moreWeatherInfoContainer,
+  cities,
+  weatherContructor,
+  WMOData
+) {
+  const countryCityWrapper = document.createElement("div");
+  countryCityWrapper.classList.add("country-city-wrapper");
 
-    const biggerHeader = document.createElement("h1");
-    biggerHeader.classList.add("bigger-header");
-    biggerHeader.textContent = "tempatures in cities on this country";
+  const biggerHeader = document.createElement("h1");
+  biggerHeader.classList.add("bigger-header");
+  biggerHeader.textContent = "tempatures in cities on this country";
 
-    countryCityWrapper.appendChild(biggerHeader);
+  countryCityWrapper.appendChild(biggerHeader);
 
-    const countryCityWeatherInfo = document.createElement("div");
-    countryCityWeatherInfo.classList.add("country-city-weather-info");
+  const countryCityWeatherInfo = document.createElement("div");
+  countryCityWeatherInfo.classList.add("country-city-weather-info");
 
-    countryCityWrapper.appendChild(countryCityWeatherInfo);
+  countryCityWrapper.appendChild(countryCityWeatherInfo);
 
-    cities.forEach(async city => {
-        const countryCityInfoCard = document.createElement("div");
-        countryCityInfoCard.classList.add("country-city-info-card");
-        countryCityInfoCard.textContent = `${city}`;
+  const maxCities = 10;
 
-        const temp = document.createElement("span");
-        temp.classList.add("temp");
+  //Shuffle the cities
+  cities.sort(() => 0.5 - Math.random());
 
-        const data = await findNavigationCity(city, 1);
+  cities.forEach(async (city, index) => {
+    if (index < maxCities) { 
+      const countryCityInfoCard = document.createElement("div");
+      countryCityInfoCard.classList.add("country-city-info-card");
+      countryCityInfoCard.textContent = `${city}`;
 
-        let weather = null;
-        data.forEach(async city => {
-            weather = await weatherContructor(openMeteoWeather(city.latitute, city.longitude, WMOData));
-            temp.textContent = `${weather.getCurrentWeatherData().currentTemp}`;
-            //We only need one city
-            return;
-        });
+      const temp = document.createElement("span");
+      temp.classList.add("temp");
 
-        countryCityInfoCard.appendChild(temp);
-        countryCityWeatherInfo.appendChild(countryCityInfoCard);
-    });
+      const data = await citySuggestions(city, 1);
 
-    countryCityWrapper.appendChild(countryCityWeatherInfo);
-    moreWeatherInfoContainer.appendChild(countryCityWrapper);
+      let weather = null;
+      data.forEach(async (city) => {
+        weather = await weatherContructor(
+          openMeteoWeather(city.latitute, city.longitude, WMOData)
+        );
+        temp.textContent = `${weather.getCurrentWeatherData().currentTemp}`;
+        //We only need one city
+        return;
+      });
+
+      countryCityInfoCard.appendChild(temp);
+      countryCityWeatherInfo.appendChild(countryCityInfoCard);
+    }
+  });
+
+  countryCityWrapper.appendChild(countryCityWeatherInfo);
+  moreWeatherInfoContainer.appendChild(countryCityWrapper);
 }

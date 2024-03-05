@@ -1,8 +1,6 @@
 import citySuggestions from "../citySuggestionAssets/citySuggestions";
-import findNavigationCity from "../citySuggestionAssets/findNavigationCity";
 import openMeteoWeather from "../weatherAssets/openMeteoWeather.mjs";
 import weatherConstructor from "../weatherAssets/weather";
-
 
 export default async function (
   headerWrapper,
@@ -64,7 +62,6 @@ export default async function (
   input.placeholder = "search city...";
   input.type = "text";
 
-  //<div class="suggestion-container"></div>
   const suggestionContainer = document.createElement("div");
   suggestionContainer.classList.add("suggestion-container");
 
@@ -73,9 +70,9 @@ export default async function (
 
   input.addEventListener("input", async () => {
     element++;
-    let copy = element;
+    let elementCopy = element;
 
-    if (element < keepChecking.length - 1) {
+    if (element < keepChecking.length) {
       keepChecking.push(keepChecking[element]);
     } else {
       keepChecking[element] = true;
@@ -92,8 +89,8 @@ export default async function (
     while (suggestionContainer.firstChild) {
       suggestionContainer.removeChild(suggestionContainer.firstChild);
     }
-    const data = await citySuggestions(input.value);
-    if (keepChecking[copy]) {
+    const data = await citySuggestions(input.value, 10);
+    if (keepChecking[elementCopy]) {
       const seen = [];
       data.forEach((suggest) => {
         if (!seen.includes(suggest.city)) {
@@ -128,12 +125,11 @@ export default async function (
   nearbyLocationCardWrapper.classList.add("nearby-location-card-wrapper");
 
   //Create 3 location items
-  let index = 0;
-  locationInfo.citiesOnCountry.forEach(async (city) => {
-    //Get city lat and long
-    const cities = await findNavigationCity(city, 1);
-    cities.forEach(async (locationCity) => {
-      if (index < 3) {
+  locationInfo.citiesOnCountry.forEach(async (city, index) => {
+    if (index < 3) {
+      //Get city lat and long
+      const citiyLocationSuggestions = await citySuggestions(city, 1);
+      citiyLocationSuggestions.forEach(async (locationCity) => {
         //Create an location for it and make an weather request
         const weather = await weatherConstructor(
           openMeteoWeather(
@@ -167,9 +163,8 @@ export default async function (
         locationItem.appendChild(locationItemCurrentTemp);
 
         nearbyLocationCardWrapper.appendChild(locationItem);
-      }
-    });
-    index++;
+      });
+    }
   });
 
   nearbyLocationContainer.appendChild(nearbyLocationCardWrapper);

@@ -11,7 +11,6 @@ function getUserLocation() {
     if (!navigator.geolocation) {
       reject(new Error("Geolocation is not supported by your browser"));
     } else {
-      console.log("Getting user geolocation..");
 
       // Options for watchPosition
       const options = {
@@ -22,7 +21,6 @@ function getUserLocation() {
       // Watch the user's position
       const watchId = navigator.geolocation.watchPosition(
         (position) => {
-          console.log("Got user location");
           // Clear the watch position once we have received the data
           navigator.geolocation.clearWatch(watchId);
           resolve(position.coords);
@@ -44,14 +42,12 @@ function handleUserLocationError(fn, ...param) {
       fn(...param)
         .catch(async (e) => {
           try {
-            console.log("User location error, getting IP");
             const fetchedData = await fetch(
               "https://api.ipify.org?format=json"
             );
             const response = await fetchedData.json();
             const ipAddress = response.ip;
             //After getting the IP make sure to get the geolocation of it
-            console.log("Getting ip geolocation");
             const fetchedGeolocationData = await fetch(
               `https://ipgeolocation.abstractapi.com/v1/?api_key=f1b6c1943ccb4f2d887969d86367649d&ip_address=${ipAddress}`
             );
@@ -156,8 +152,6 @@ export default async function (
   for(let prop in thisWeekWeather.data){
     weekAvarageTemp.push((thisWeekWeather.data[prop].minTemp + thisWeekWeather.data[prop].maxTemp) / 2);
   }
-
-  console.log(weekAvarageTemp);
 
   plotDom(plot, weekAvarageTemp, moreWeatherInfoContainer);
 }

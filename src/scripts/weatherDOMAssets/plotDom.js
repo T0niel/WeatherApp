@@ -1,10 +1,3 @@
-/*
-<h1 class="bigger-header">This week</h1>
-      <div class="chart-data">
-        <div class="plot" id="weatherPlot" style="width: 100%; max-width: 700px"></div>
-      </div> 
-*/
-
 export default function (plotFun, weatherThisWeek, moreWeatherInfoContainer) {
   const biggerHeader = document.createElement("h1");
   biggerHeader.classList.add("bigger-header");
